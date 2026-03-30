@@ -14,13 +14,11 @@ export class GameEngine {
     this.terminal = terminal;
   }
 
-  start(): void {
-    // Wire up keyboard input
-    this.terminal.onInput((data) => this.handleInput(data));
-
-    // Draw the initial screen
-    this.render();
-  }
+start(): void {
+  this.terminal.onInput((data) => this.handleInput(data));
+  // Small delay lets the PTY fully open before we write to it
+  setTimeout(() => this.render(), 100);
+}
 
   private handleInput(data: string): void {
     // ESC or Ctrl+C quits
