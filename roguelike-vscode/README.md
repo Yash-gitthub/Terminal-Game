@@ -14,6 +14,10 @@ A 2D roguelike game playable inside the VS Code terminal, built as a VS Code ext
 | Key | Action |
 |-----|--------|
 | `ESC` / `Ctrl+C` | Quit |
+| `A` | Move Right |
+| `W` | Move Up |
+| `S` | Move Down |
+| `D` | Move Left |
 
 *(More controls coming in future milestones)*
 
@@ -34,7 +38,10 @@ src/
   terminal.ts         Pseudoterminal (PTY) wrapper + ANSI helpers
   game/
     engine.ts         Game loop, input handling, render calls
+    renderer.js       Renders the map, player and actions
+    state.js          Tells about the map, the player's x and y position.
   world/              (Milestone 4) Map generation, tiles, FOV
+    map.js            Creates dot matrix as map with @ as player
   entities/           (Milestone 6) Player, monsters
   items/              (Milestone 7) Items, inventory
 ```
@@ -42,7 +49,7 @@ src/
 ## Milestones
 
 - [x] **M1** — Hello terminal: PTY, command, ANSI render
-- [ ] **M2** — Grid renderer: 20×10 map, `@` player
+- [x] **M2** — Grid renderer: 20×10 map, `@` player
 - [ ] **M3** — Movement: arrow keys / WASD
 - [ ] **M4** — Dungeon generation: BSP rooms + corridors
 - [ ] **M5** — Field of view: shadowcasting
