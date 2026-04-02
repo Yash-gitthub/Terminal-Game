@@ -15,4 +15,18 @@
 - ANSI escape codes control terminal color and cursor position: `\x1b[2J` clears the screen, `\x1b[H` homes the cursor, `\x1b[32m` makes text green
 - The terminal uses `\n\r` (not just `\n`) for line breaks in raw mode
 
-**Next:** Milestone 2 — render a 20×10 grid of tiles with `@` as the player.
+**Next:** Milestone 2 — render a 20×10 grid of tiles with `@` as the player
+## Milestone 2 — Map and world
+
+**Goal:**  Render a 20×10 grid of tiles (dotted matrix) with `@` as the player
+
+**What I built:**
+- `world/map.ts` — takes width (rows, inner array) and height (columns, outer array) as input and forms a dot matrix using Array.from method
+- `game/state.js` — a simple object that holds everything the game currently knows: the map, the player's x and y position
+- `game/renderer.js` — takes the state and converts it to an ANSI string. The engine calls this every frame
+
+**Key things i learned:**
+- A terminal is just a grid of character cells — row 1 col 1, row 1 col 2, and so on. Our "game map" is just a 2D array of characters. 
+- The renderer's job is to loop through that array and write each character to the right position on screen using ANSI cursor-move codes. 
+
+**Next:** Milestone 3 — Movement: arrow keys / WASD
