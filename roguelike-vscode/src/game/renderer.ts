@@ -1,0 +1,28 @@
+import { GameState } from './state';
+import { ansi } from '../terminal';
+
+export class Renderer {
+  private terminal: { write: (text: string) => void };
+
+  constructor(terminal: { write: (text: string) => void }) {
+    this.terminal = terminal;
+  }
+
+  draw(state: GameState): void {
+    let frame = ansi.clear + ansi.home;
+
+    for (let y = 0; y < state.map.height; y++) {
+      let row = '';
+      for (let x = 0; x < state.map.width; x++) {
+        if (x == state.playerX && y ==state.playerY){
+            row += '@';
+        }else{
+            row += state.map.getTile(x,y);
+        }
+      }
+      frame += row + '\n\r';
+    }
+
+    this.terminal.write(frame);
+  }
+}
