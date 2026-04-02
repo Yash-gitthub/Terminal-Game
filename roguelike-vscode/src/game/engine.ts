@@ -36,7 +36,21 @@ start(): void {
       this.terminal.clearScreen();
       this.terminal.write(ansi.yellow + '  Farewell, adventurer.\n\r' + ansi.reset);
       setTimeout(() => this.terminal.exit(), 800);
+      return;
     }
+    if (data == KEY.right && this.state.playerX < this.state.map.width - 1){
+      this.state.playerX += 1;
+    }
+    if (data == KEY.left && this.state.playerX > 0){
+      this.state.playerX -= 1;
+    }
+    if (data == KEY.up && this.state.playerY > 0){
+      this.state.playerY -= 1;
+    }
+    if (data == KEY.down && this.state.playerY < this.state.map.height - 1){
+      this.state.playerY += 1;
+    }
+    this.render()
   }
 
   private render(): void {
