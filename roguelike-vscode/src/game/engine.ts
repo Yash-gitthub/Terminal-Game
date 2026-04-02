@@ -7,6 +7,10 @@ const KEY = {
   escape: '\x1b',
   ctrlC: '\x03',
   enter: '\r',
+  up: '\x1b[A',
+  down: '\x1b[B',  
+  right: '\x1b[C',
+  left: '\x1b[D'
 };
 
 export class GameEngine {
