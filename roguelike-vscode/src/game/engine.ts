@@ -1,4 +1,6 @@
 import { GameTerminal, ansi } from '../terminal';
+import { GameState } from './state';
+import { Renderer } from './renderer';
 
 // Key codes sent by the terminal for special keys
 const KEY = {
@@ -9,9 +11,13 @@ const KEY = {
 
 export class GameEngine {
   private terminal: GameTerminal;
+  private state: GameState;
+  private renderer: Renderer;
 
   constructor(terminal: GameTerminal) {
     this.terminal = terminal;
+    this.state = new GameState();
+    this.renderer = new Renderer(terminal);
   }
 
 start(): void {
@@ -30,26 +36,6 @@ start(): void {
   }
 
   private render(): void {
-    this.terminal.clearScreen();
-
-    const lines = [
-      '',
-      ansi.yellow + ansi.bold + '  ██████╗  ██████╗  ██████╗ ██╗   ██╗███████╗██╗     ██╗██╗  ██╗███████╗' + ansi.reset,
-      ansi.yellow +             '  ██╔══██╗██╔═══██╗██╔════╝ ██║   ██║██╔════╝██║     ██║██║ ██╔╝██╔════╝' + ansi.reset,
-      ansi.yellow +             '  ██████╔╝██║   ██║██║  ███╗██║   ██║█████╗  ██║     ██║█████╔╝ █████╗  ' + ansi.reset,
-      ansi.yellow +             '  ██╔══██╗██║   ██║██║   ██║██║   ██║██╔══╝  ██║     ██║██╔═██╗ ██╔══╝  ' + ansi.reset,
-      ansi.yellow +             '  ██║  ██║╚██████╔╝╚██████╔╝╚██████╔╝███████╗███████╗██║██║  ██╗███████╗' + ansi.reset,
-      ansi.gray +               '  ╚═╝  ╚═╝ ╚═════╝  ╚═════╝  ╚═════╝ ╚══════╝╚══════╝╚═╝╚═╝  ╚═╝╚══════╝' + ansi.reset,
-      '',
-      ansi.cyan + '                        A dungeon awaits beneath your feet.' + ansi.reset,
-      '',
-      ansi.gray + '                              Milestone 1 — Hello, dungeon!' + ansi.reset,
-      '',
-      '',
-      ansi.white + '                                  Press  ' + ansi.yellow + ansi.bold + 'ESC' + ansi.reset + ansi.white + '  to quit' + ansi.reset,
-      '',
-    ];
-
-    this.terminal.write(lines.join('\n\r'));
+    this.renderer.draw(this.state);
   }
 }
