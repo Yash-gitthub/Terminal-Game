@@ -15,7 +15,7 @@ export class GameMap {
   }
 
   getTile(x: number, y: number): Tile {
-    return tiles[x][y];
+    return this.tiles[y][x];
   }
 
   setTile(x: number, y: number, tile: Tile): void {
