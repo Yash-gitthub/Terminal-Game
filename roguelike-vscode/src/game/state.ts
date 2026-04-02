@@ -6,6 +6,8 @@ export class GameState {
   playerY: number;
 
   constructor() {
-    
+    this.map = new GameMap(20, 10);
+    this.playerX = 10;
+    this.playerY = 5;
   }
 }
