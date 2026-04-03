@@ -53,3 +53,14 @@
 - The foundation every game ever made is built on
 
 **Next:** Milestone 4 — Generate wall, rooms and corridors
+## Milestone 4 — Dungeons
+
+**Goal:** Generate rooms and corridors using BSP (Binary Space Partitioning)
+
+**What I built**
+- `world/room.ts` — Creates rooms of specified position of `x` and `y` (top right corner of a room) and `carve` accordingly to `width` and `height`. 
+- `world/mapgen.ts` — An automated logic to create different number of rooms and path with different dimensions at random postions
+- `game/state.ts` — Controls the map dimension, and creates `room[0]` at centre for player to drop
+- `game/engine.ts` — Handles wall collusion by checking for fall from `getTile()`
+  
+**Next:** Milestone 5 — Field of view
