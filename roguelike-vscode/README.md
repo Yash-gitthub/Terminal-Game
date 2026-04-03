@@ -14,10 +14,10 @@ A 2D roguelike game playable inside the VS Code terminal, built as a VS Code ext
 | Key | Action |
 |-----|--------|
 | `ESC` / `Ctrl+C` | Quit |
-| `D` | Move Right |
-| `W` | Move Up |
-| `S` | Move Down |
-| `A` | Move Left |
+| `D` / `→` | Move Right |
+| `W` / `↑` | Move Up |
+| `S` / `↓` | Move Down |
+| `A` / `←` | Move Left |
 
 *(More controls coming in future milestones)*
 
