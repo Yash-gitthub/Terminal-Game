@@ -38,10 +38,12 @@ src/
   terminal.ts         Pseudoterminal (PTY) wrapper + ANSI helpers
   game/
     engine.ts         Game loop, input handling, render calls
-    renderer.js       Renders the map, player and actions
-    state.js          Tells about the map, the player's x and y position.
+    renderer.ts       Renders the map, player and actions
+    state.ts          Tells about the map, the player's x and y position.
   world/              (Milestone 4) Map generation, tiles, FOV
-    map.js            Creates dot matrix as map with @ as player
+    map.ts            Creates dot matrix as map with @ as player
+    mapgen.ts         Creates map, decides layout
+    rooms.ts          Contains logic of creating rooms and path
   entities/           (Milestone 6) Player, monsters
   items/              (Milestone 7) Items, inventory
 ```
@@ -51,7 +53,7 @@ src/
 - [x] **M1** — Hello terminal: PTY, command, ANSI render
 - [x] **M2** — Grid renderer: 20×10 map, `@` player
 - [x] **M3** — Movement: arrow keys / WASD
-- [ ] **M4** — Dungeon generation: BSP rooms + corridors
+- [x] **M4** — Dungeon generation: BSP rooms + corridors
 - [ ] **M5** — Field of view: shadowcasting
 - [ ] **M6** — Monsters + turn system
 - [ ] **M7** — Items, inventory, win/lose
