@@ -42,16 +42,20 @@ start(): void {
       setTimeout(() => this.terminal.exit(), 800);
       return;
     }
-    if ((data == KEY.right || data == KEY.d) && this.state.playerX < this.state.map.width - 1){
+    if ((data == KEY.right || data == KEY.d) && this.state.playerX < this.state.map.width - 1 && 
+    this.state.map.getTile(this.state.playerX + 1, this.state.playerY) === '.'){
       this.state.playerX += 1;
     }
-    if ((data == KEY.left || data == KEY.a) && this.state.playerX > 0){
+    if ((data == KEY.left || data == KEY.a) && this.state.playerX > 0 &&
+    this.state.map.getTile(this.state.playerX - 1, this.state.playerY) === '.'){
       this.state.playerX -= 1;
     }
-    if ((data == KEY.up || data == KEY.w) && this.state.playerY > 0){
+    if ((data == KEY.up || data == KEY.w) && this.state.playerY > 0 &&
+    this.state.map.getTile(this.state.playerX, this.state.playerY - 1) === '.'){
       this.state.playerY -= 1;
     }
-    if ((data == KEY.down || data == KEY.s) && this.state.playerY < this.state.map.height - 1){
+    if ((data == KEY.down || data == KEY.s) && this.state.playerY < this.state.map.height - 1 &&
+    this.state.map.getTile(this.state.playerX, this.state.playerY + 1) === '.'){
       this.state.playerY += 1;
     }
     this.render()
