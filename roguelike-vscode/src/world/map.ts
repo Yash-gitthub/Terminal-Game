@@ -1,5 +1,9 @@
 // A tile is just one character — '.' for floor, '#' for wall
-type Tile = '.' | '█';
+type Tile = {
+  glyph: '.' | '█';
+  visible: boolean;
+  explored: boolean;
+};
 
 export class GameMap {
   readonly width: number;
@@ -10,7 +14,11 @@ export class GameMap {
     this.width = width;
     this.height = height;
     this.tiles = Array.from({length:height}, () => 
-        Array.from({length:width}, ()=>'█')
+        Array.from({length:width}, ()=>({
+          glyph: '█',
+          visible: false,
+          explored: false
+        }))
     );
   }
 
@@ -18,7 +26,7 @@ export class GameMap {
     return this.tiles[y][x];
   }
 
-  setTile(x: number, y: number, tile: Tile): void {
-    this.tiles[y][x] = tile;
+  setTile(x: number, y: number, glyph: '.' | '█'): void {
+    this.tiles[y][x].glyph = glyph;
   }
 }
