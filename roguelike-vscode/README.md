@@ -14,10 +14,10 @@ A 2D roguelike game playable inside the VS Code terminal, built as a VS Code ext
 | Key | Action |
 |-----|--------|
 | `ESC` / `Ctrl+C` | Quit |
-| `A` | Move Right |
+| `D` | Move Right |
 | `W` | Move Up |
 | `S` | Move Down |
-| `D` | Move Left |
+| `A` | Move Left |
 
 *(More controls coming in future milestones)*
 
@@ -50,7 +50,7 @@ src/
 
 - [x] **M1** — Hello terminal: PTY, command, ANSI render
 - [x] **M2** — Grid renderer: 20×10 map, `@` player
-- [ ] **M3** — Movement: arrow keys / WASD
+- [x] **M3** — Movement: arrow keys / WASD
 - [ ] **M4** — Dungeon generation: BSP rooms + corridors
 - [ ] **M5** — Field of view: shadowcasting
 - [ ] **M6** — Monsters + turn system
