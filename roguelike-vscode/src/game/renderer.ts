@@ -14,10 +14,16 @@ export class Renderer {
     for (let y = 0; y < state.map.height; y++) {
       let row = '';
       for (let x = 0; x < state.map.width; x++) {
-        if (x == state.playerX && y ==state.playerY){
-            row += '@';
-        }else{
-            row += state.map.getTile(x,y);
+        const tile = state.map.getTile(x, y);
+        
+        if (x === state.playerX && y === state.playerY) {
+          row += '@';
+        } else if (tile.visible) {
+          row += tile.glyph;
+        } else if (tile.explored) {
+          row += ansi.gray + tile.glyph + ansi.reset;
+        } else {
+          row += '█';
         }
       }
       frame += row + '\n\r';
