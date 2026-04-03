@@ -10,7 +10,11 @@ const KEY = {
   up: '\x1b[A',
   down: '\x1b[B',  
   right: '\x1b[C',
-  left: '\x1b[D'
+  left: '\x1b[D',
+  w: 'w',
+  a: 'a',
+  s: 's',
+  d: 'd',
 };
 
 export class GameEngine {
@@ -38,16 +42,16 @@ start(): void {
       setTimeout(() => this.terminal.exit(), 800);
       return;
     }
-    if (data == KEY.right && this.state.playerX < this.state.map.width - 1){
+    if ((data == KEY.right || data == KEY.d) && this.state.playerX < this.state.map.width - 1){
       this.state.playerX += 1;
     }
-    if (data == KEY.left && this.state.playerX > 0){
+    if ((data == KEY.left || data == KEY.a) && this.state.playerX > 0){
       this.state.playerX -= 1;
     }
-    if (data == KEY.up && this.state.playerY > 0){
+    if ((data == KEY.up || data == KEY.w) && this.state.playerY > 0){
       this.state.playerY -= 1;
     }
-    if (data == KEY.down && this.state.playerY < this.state.map.height - 1){
+    if ((data == KEY.down || data == KEY.s) && this.state.playerY < this.state.map.height - 1){
       this.state.playerY += 1;
     }
     this.render()
