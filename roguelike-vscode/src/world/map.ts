@@ -1,5 +1,5 @@
 // A tile is just one character — '.' for floor, '#' for wall
-type Tile = '.' | '#';
+type Tile = '.' | '█';
 
 export class GameMap {
   readonly width: number;
@@ -10,7 +10,7 @@ export class GameMap {
     this.width = width;
     this.height = height;
     this.tiles = Array.from({length:height}, () => 
-        Array.from({length:width}, ()=>'.')
+        Array.from({length:width}, ()=>'█')
     );
   }
 
