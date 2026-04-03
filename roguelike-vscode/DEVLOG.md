@@ -33,10 +33,11 @@
 **Goal:** Implement movemnets to player `@` using WSAD keys
 
 **What I built**
-- `game/engine.ts` — an object with key commands — `up: '\x1b[A'`, `down: '\x1b[B'`,  `right: '\x1b[C'`
-  `left: '\x1b[D`
-- `A` / `D` → change `playerX` (column, inner array index) - `playerX -= 1` and `playerX += 1`
-  `W` / `S` → change `playerY` (  row,  outer array index) - `playerY -= 1` and `playerY += 1`
+- `game/engine.ts` — an object with key commands — 
+  `up: '\x1b[A'`, `down: '\x1b[B'`,  `right: '\x1b[C'`, `left: '\x1b[D`
+  `up: 'w'`,      `down: 's'`,       `right: 'a'`,      `left: d` 
+- `A ←` / `D →` → change `playerX` (column, inner array index) - `playerX -= 1` and `playerX += 1`
+  `W ↑` / `S ↓` → change `playerY` (  row,  outer array index) - `playerY -= 1` and `playerY += 1`
 - Every action also performs boundary check — before moving, verify the new position is still inside the map
   ```
   new x must be >= 0 and < map.width
