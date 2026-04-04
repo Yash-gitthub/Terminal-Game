@@ -63,10 +63,32 @@ start(): void {
     }
     // after all movement checks, before render
     computeFOV(this.state, 5);
+    this.processTurn();
     this.render();
   }
 
   private render(): void {
     this.renderer.draw(this.state);
+  }
+
+  private processTurn(): void {
+    for (const monster of this.state.monsters) {
+      if (monster.isPlayerVisible(this.state.playerX, this.state.playerY)) {
+        monster.seen = true;
+      }
+      if (monster.seen) {
+        monster.moveToward(this.state.playerX, this.state.playerY, this.state.map);
+      } else {
+        // random movement
+        const dirs = [{dx:1,dy:0},{dx:-1,dy:0},{dx:0,dy:1},{dx:0,dy:-1}];
+        const dir = dirs[Math.floor(Math.random() * dirs.length)];
+        const nx = monster.x + dir.dx;
+        const ny = monster.y + dir.dy;
+        if (this.state.map.getTile(nx, ny).glyph === '.') {
+          monster.x = nx;
+          monster.y = ny;
+        }
+      }
+    }
   }
 }
