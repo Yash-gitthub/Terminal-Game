@@ -23,7 +23,7 @@ export class Renderer {
         } else if (tile.explored) {
           row += ansi.gray + tile.glyph + ansi.reset;
         } else {
-          row += '█';
+          row += ansi.gray + '█' + ansi.reset;
         }
       }
       frame += row + '\n\r';
