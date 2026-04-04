@@ -1,6 +1,7 @@
 import { GameTerminal, ansi } from '../terminal';
 import { GameState } from './state';
 import { Renderer } from './renderer';
+import { computeFOV } from '../world/fov';
 
 // Key codes sent by the terminal for special keys
 const KEY = {
@@ -30,8 +31,10 @@ export class GameEngine {
 
 start(): void {
   this.terminal.onInput((data) => this.handleInput(data));
-  // Small delay lets the PTY fully open before we write to it
-  setTimeout(() => this.render(), 100);
+  setTimeout(() => {
+    computeFOV(this.state, 5);
+    this.render();
+  }, 100);
 }
 
   private handleInput(data: string): void {
@@ -58,7 +61,9 @@ start(): void {
     this.state.map.getTile(this.state.playerX, this.state.playerY + 1).glyph === '.'){
       this.state.playerY += 1;
     }
-    this.render()
+    // after all movement checks, before render
+    computeFOV(this.state, 5);
+    this.render();
   }
 
   private render(): void {
