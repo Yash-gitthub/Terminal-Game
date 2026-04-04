@@ -14,4 +14,10 @@ export class Monster {
         this.seen = seen;
         this.fovRadius = fovRadius;
     }
+
+    isPlayerVisible(playerX: number, playerY: number): boolean {
+        const dx = playerX - this.x;
+        const dy = playerY - this.y;
+        return (dx * dx + dy * dy) <= this.fovRadius * this.fovRadius;
+    }
 }
