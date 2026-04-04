@@ -29,4 +29,11 @@ export class GameMap {
   setTile(x: number, y: number, glyph: '.' | '█'): void {
     this.tiles[y][x].glyph = glyph;
   }
+
+  setVisibility(x: number, y: number, visible: boolean, explored: boolean): void {
+    this.tiles[y][x].visible = visible;
+    if (explored) {
+      this.tiles[y][x].explored = true;
+      }
+    }
 }
