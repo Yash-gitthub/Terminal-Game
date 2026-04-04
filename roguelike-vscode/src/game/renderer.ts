@@ -14,10 +14,13 @@ export class Renderer {
     for (let y = 0; y < state.map.height; y++) {
       let row = '';
       for (let x = 0; x < state.map.width; x++) {
+        const monster = state.monsters.find(m => m.x === x && m.y === y);
         const tile = state.map.getTile(x, y);
         
         if (x === state.playerX && y === state.playerY) {
-          row += '@';
+          row += ansi.green + '@' + ansi.reset;
+        } else if (monster && tile.visible) {
+          row += ansi.cyan + monster.glyph + ansi.reset;
         } else if (tile.visible) {
           row += tile.glyph;
         } else if (tile.explored) {
