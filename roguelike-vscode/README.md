@@ -40,11 +40,13 @@ src/
     engine.ts         Game loop, input handling, render calls
     renderer.ts       Renders the map, player and actions
     state.ts          Tells about the map, the player's x and y position.
-  world/              (Milestone 4) Map generation, tiles, FOV
+  world/
+    fov.ts            Generates an FOV radius
     map.ts            Creates dot matrix as map with @ as player
     mapgen.ts         Creates map, decides layout
     rooms.ts          Contains logic of creating rooms and path
-  entities/           (Milestone 6) Player, monsters
+  entities/ 
+    monster.ts        Monster properties (position, glyph, fov)
   items/              (Milestone 7) Items, inventory
 ```
 
@@ -54,8 +56,8 @@ src/
 - [x] **M2** — Grid renderer: 20×10 map, `@` player
 - [x] **M3** — Movement: arrow keys / WASD
 - [x] **M4** — Dungeon generation: BSP rooms + corridors
-- [ ] **M5** — Field of view: shadowcasting
-- [ ] **M6** — Monsters + turn system
+- [x] **M5** — Field of view: shadowcasting
+- [x] **M6** — Monsters + turn system
 - [ ] **M7** — Items, inventory, win/lose
 
 ## Devlog
