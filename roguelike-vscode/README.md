@@ -19,6 +19,8 @@ A 2D roguelike game playable inside the VS Code terminal, built as a VS Code ext
 | `S` / `↓` | Move Down |
 | `A` / `←` | Move Left |
 
+
+
 *(More controls coming in future milestones)*
 
 ## Development setup
@@ -37,7 +39,7 @@ src/
   extension.ts        VS Code entry point — registers the command
   terminal.ts         Pseudoterminal (PTY) wrapper + ANSI helpers
   game/
-    engine.ts         Game loop, input handling, render calls
+    engine.ts         Game loop, input handling, movemnets and damage, render calls
     renderer.ts       Renders the map, player and actions
     state.ts          Tells about the map, the player's x and y position.
   world/
