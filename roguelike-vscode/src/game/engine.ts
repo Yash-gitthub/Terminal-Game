@@ -130,7 +130,15 @@ start(): void {
         monster.seen = true;
       }
       if (monster.seen) {
-        monster.moveToward(this.state.playerX, this.state.playerY, this.state.map);
+        const newX = monster.x + Math.sign(this.state.playerX - monster.x);
+        const newY = monster.y + Math.sign(this.state.playerY - monster.y);
+        
+        // if monster would step on player — attack instead
+        if (newX === this.state.playerX && newY === this.state.playerY) {
+          this.state.playerHp -= 3;
+        } else {
+          monster.moveToward(this.state.playerX, this.state.playerY, this.state.map);
+        }
       } else {
         // random movement
         const dirs = [{dx:1,dy:0},{dx:-1,dy:0},{dx:0,dy:1},{dx:0,dy:-1}];
