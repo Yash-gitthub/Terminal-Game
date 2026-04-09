@@ -31,7 +31,11 @@ export class Renderer {
       }
       frame += row + '\n\r';
     }
-
+    frame += '\n\r';
+    frame += ansi.white + ' HP: ' + ansi.reset;
+    frame += state.playerHp > 15
+      ? ansi.green + state.playerHp + ansi.reset
+      : ansi.yellow + state.playerHp + ansi.reset;
     this.terminal.write(frame);
   }
 }
