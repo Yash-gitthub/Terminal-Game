@@ -38,7 +38,7 @@ start(): void {
 }
 
   private handleInput(data: string): void {
-    
+
     if (this.state.gameOver) {
       if (data === KEY.escape || data === KEY.ctrlC) {
         this.terminal.exit();
@@ -129,6 +129,13 @@ start(): void {
       this.state.gameOver = true;
       this.renderer.draw(this.state);
       this.terminal.write('\n\r' + ansi.yellow + ansi.bold + '  You died. Press ESC to quit.' + ansi.reset);
+      return;
+    }
+
+    if (this.state.monsters.length === 0) {
+      this.state.gameOver = true;
+      this.renderer.draw(this.state);
+      this.terminal.write('\n\r' + ansi.yellow + ansi.bold + '  You cleared the dungeon! Press ESC to quit.' + ansi.reset);
       return;
     }
 
