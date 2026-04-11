@@ -17,7 +17,7 @@ export class GameState {
     const start = rooms[0].centre();
     this.playerX = start.x;
     this.playerY = start.y;
-    this.playerHp = 30;
+    this.playerHp = 50;
 
     this.monsters = rooms.slice(1).map(room => {
       const c = room.centre();
