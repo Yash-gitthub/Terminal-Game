@@ -38,6 +38,13 @@ start(): void {
 }
 
   private handleInput(data: string): void {
+    
+    if (this.state.gameOver) {
+      if (data === KEY.escape || data === KEY.ctrlC) {
+        this.terminal.exit();
+      }
+      return;
+    }
     // ESC or Ctrl+C quits
     if (data === KEY.escape || data === KEY.ctrlC) {
       this.terminal.clearScreen();
@@ -118,7 +125,8 @@ start(): void {
     computeFOV(this.state, 5);
     this.processTurn();
 
-    if (this.state.playerHp == 0) {
+    if (this.state.playerHp <= 0) {
+      this.state.gameOver = true;
       this.renderer.draw(this.state);
       this.terminal.write('\n\r' + ansi.yellow + ansi.bold + '  You died. Press ESC to quit.' + ansi.reset);
       return;

@@ -8,6 +8,7 @@ export class GameState {
   playerY: number;
   playerHp: number;
   monsters: Monster[];
+  gameOver: boolean = false;
 
   constructor() {
     this.map = new GameMap(40, 20);
