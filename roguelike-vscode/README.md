@@ -60,7 +60,7 @@ src/
 - [x] **M4** — Dungeon generation: BSP rooms + corridors
 - [x] **M5** — Field of view: shadowcasting
 - [x] **M6** — Monsters + turn system
-- [ ] **M7** — Items, inventory, win/lose
+- [x] **M7** — Items, inventory, win/lose
 
 ## Devlog
 
