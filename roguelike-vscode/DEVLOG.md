@@ -122,4 +122,27 @@ player acts → computeFOV → processTurn (monsters act) → render
 - `Array.find()` searches an array and returns the first match — useful for checking if a monster occupies a tile
 - `rooms.slice(1)` skips the first element — clean way to exclude the player's starting room
 
-**Next:** Milestone 7 — Items, inventory, win/lose
+---
+
+## Milestone 7 — Combat, death, and win condition
+
+**Goal:** Make combat meaningful — player and monsters deal damage, game ends on death or victory.
+
+**What I built:**
+- `game/engine.ts` — bump combat: moving into a monster attacks it for 5 damage instead of walking through it. Monsters attack player for 3 damage when they step onto the player's tile
+- `game/state.ts` — added `playerHp` (starts at 30) and `gameOver` flag
+- `game/renderer.ts` — HP status line below the map, green when healthy, red when low
+- `game/engine.ts` — death screen when `playerHp <= 0`, win screen when all monsters are dead. `gameOver` flag freezes all input except ESC
+
+**Game states:**
+```
+playing   → normal input and turn processing
+dead      → playerHp <= 0, red death message, only ESC works
+won       → monsters.length === 0, yellow win message, only ESC works
+```
+
+**Key things I learned:**
+- Bump combat is the simplest possible combat system — movement and attack share the same input
+- `Array.filter(m => m !== target)` removes one element by returning everyone except it
+- A `gameOver` boolean checked at the top of `handleInput` is the cleanest way to freeze the game — no complex state machine needed
+- Win and lose conditions are just checks after `processTurn` — the game loop doesn't need to change, just what happens at the end of it
